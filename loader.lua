@@ -2113,6 +2113,8 @@ local moselib=[[
 	return library
 ]]
 local lib=loadstring(moselib)()repeat wait()until work.Characters:FindFirstChild(plr.Name)
+local function loadbloxfruits()
+	repeat wait()until work.Characters:FindFirstChild(plr.Name)
 	local nw=4442272183 local sm=2753915549 local tw=7449423635
 	local lighting=game:GetService('Lighting')local asssupercock=game:GetService('ReplicatedStorage')local ultraasssupercum=lighting.FogEnd
 	local win=lib:Create('Blox Fruits')
@@ -2153,7 +2155,6 @@ local lib=loadstring(moselib)()repeat wait()until work.Characters:FindFirstChild
 	end)
 	local autobuso local autoken
 	s:CreateToggle('Auto Busoshoku Haki',function(state)autobuso=state end)
-	s:CreateToggle('Auto Kenbunsoku Haki',function(state)autoken=state end)
 	s:CreateLabel('Mastery Farm')
 	local dfmasterydf
 	local dfmasdropdown=s:CreateDropdown('Devil Fruit',backpacktools,function(val)dfmasterydf=val end)
