@@ -2050,4 +2050,4 @@ local maf03={
 }
 if table.find(maf03.roghoul,game.PlaceId)then loadroghoul()end
 if table.find(maf03.bloxfruits,game.PlaceId)then loadbloxfruits()end
-if table.find(maf03.aba,game.PlaceId)then loadbloxfruits()end
+if table.find(maf03.aba,game.PlaceId)then loadaba()end
