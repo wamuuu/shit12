@@ -1054,7 +1054,7 @@ local moselib=[[
 	end
 	return library
 ]]
-local lib=loadstring(moselib)()repeat wait()until work.Characters:FindFirstChild(plr.Name)
+local lib=loadstring(moselib)()
 local function loadbloxfruits()
 	repeat wait()until work.Characters:FindFirstChild(plr.Name)
 	local nw=4442272183 local sm=2753915549 local tw=7449423635
