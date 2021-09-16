@@ -1661,6 +1661,7 @@ local function loadbloxfruits()
 			end
 		end
 		if autobuso then if not plr.Character:FindFirstChild("HasBuso")then asssupercock.Remotes['CommF_']:InvokeServer('Buso')end end
+		if not dfmastery then dfmasclicker=true end
 		if dfmastery then
 			for i,v in pairs(work.Enemies:GetChildren())do
 			    if v:FindFirstChild('Humanoid')and v:FindFirstChild('HumanoidRootPart') and string.find(v.Name,automob)then
