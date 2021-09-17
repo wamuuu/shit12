@@ -1126,10 +1126,11 @@ local function loadbloxfruits()
 	local stattoadd
 	s:CreateDropdown('Stat to Add',{'Melee','Defense','Sword','Gun','Demon Fruit'},function(val)stattoadd=val end)
 	local autofindcolors local autolegendarysword
-	if game.PlaceId==nw then
-	s:CreateLabel('Auto Dealers')
-		s:CreateToggle('Auto Find Colors',function(state)autofindcolors=state end)
-		s:CreateToggle('Auto Find Legendary Sword',function(state)autolegendarysword=state end)
+	if game.PlaceId==nw or game.PlaceId==tw then
+		s:CreateLabel('Auto Dealers')
+		s:CreateToggle('Auto Haki Colors',function(state)autofindcolors=state end)
+	elseif game.PlaceId==nw then
+		s:CreateToggle('Auto Legendary SS',function(state)autolegendarysword=state end)
 	end
 	local killaura local autoislandteleports local autofactory
 	local quest=plr.PlayerGui.Main.Quest if game.PlaceId==nw or game.PlaceId==tw then
@@ -1480,7 +1481,7 @@ local function loadbloxfruits()
 					if not delay2 and not quest.Visible then startquest('IceSideQuest',1)end
 				elseif automob=='Horned Warrior'then
 					if not delay2 and not quest.Visible then startquest('IceSideQuest',2)end
-				elseif automob=='Lava Ninja'then
+				elseif automob=='Magma Ninja'then
 					if not delay2 and not quest.Visible then startquest('FireSideQuest',1)end
 				elseif automob=='Lava Pirate'then
 					if not delay2 and not quest.Visible then startquest('FireSideQuest',2)end
@@ -2034,6 +2035,112 @@ local function loadroghoul()
 		else pcall(function()tween:Cancel()end)end
 	end)
 end
+local function loadbokunoroblox()
+	repeat wait()until work:FindFirstChild(plr.Name)local npcs=work.NPCs
+	local win=lib:Create('Boku No Roblox')
+	local s=win:CreateTab('Farm')
+	local ss=win:CreateTab('Misc')
+	local sss=win:CreateTab('Options')
+	local function namemobs()
+		for i,v in pairs(npcs:GetChildren()) do
+		    if string.find(v.Name,'1')or string.find(v.Name,'2')or string.find(v.Name,'3')or string.find(v.Name,'4')or string.find(v.Name,'5')or string.find(v.Name,'6')then
+		        v.Name=v.Name:split('1')[1]v.Name=v.Name:split('2')[1]v.Name=v.Name:split('3')[1]v.Name=v.Name:split('4')[1]v.Name=v.Name:split('5')[1]v.Name=v.Name:split('6')[1]
+		    end
+		end
+	end local mobstable={}namemobs()
+	for i,v in pairs(npcs:GetChildren()) do
+	    if not table.find(mobstable,v.Name)and v:FindFirstChild('Humanoid')and v.Humanoid.Health>0 then
+	        table.insert(mobstable,v.Name)
+	    end
+	end
+	s:CreateLabel('Main')
+	local farm	
+	s:CreateToggle('Farm',function(state)farm=state end)
+	s:CreateTableDropdown('Mobs To Farm',mobstable,function(val)mobstofarm=val end)
+	local farmdistance=5
+	s:CreateSlider(0,farmdistance,100,'Distance',function(val)farmdistance=val end)
+	s:CreateLabel('Auto Skills')
+	local auz local aux local auc local auv local aub local auq local asue local auf
+	s:CreateToggle('Auto Skill Z',function(state)auz=state end)
+	s:CreateToggle('Auto Skill X',function(state)aux=state end)
+	s:CreateToggle('Auto Skill C',function(state)auc=state end)
+	s:CreateToggle('Auto Skill V',function(state)auv=state end)
+	s:CreateToggle('Auto Skill B',function(state)aub=state end)
+	s:CreateToggle('Auto Skill Q',function(state)auq=state end)
+	s:CreateToggle('Auto Skill E',function(state)asue=state end)
+	s:CreateToggle('Auto Skill F',function(state)auf=state end)
+	ss:CreateLabel('Main')
+	local autospin	
+	ss:CreateToggle('AutoSpin',function(state)autospin=state end)
+	local allquirks={
+		'Half Cold Half Hot','One For All','Quirkless',
+		'Explosion','Overhaul','Warp Gate',
+		'Air Propulsion','Shock Absorption','Blackhole',
+		'Dark Shadow','Cremation','Muscle Augmentation',
+		'Permetion','Decay','Acid',
+		'Pop Off','Creation','Clones',
+		'All For One','Frog','Fierce Wings',
+		'Orcinus','Manifes','Big Fist'
+	}
+	local bruhcum={1,2,3,6,16,8,11,12,18,20,19,21,22,26,27,23,28,29,30,32,33,35,36}
+	local quirkstospin={}local ass={}
+	ss:CreateTableDropdown('Quirks to Spin',allquirks,function(val)
+		if table.find(val,'Half Cold Half Hot')and not table.find(quirkstospin,1)then table.insert(quirkstospin,1)elseif not table.find(val,'Half Cold Half Hot')and table.find(quirkstospin,1)then for i,v in pairs(quirkstospin)do if v==1 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'One For All')and not table.find(quirkstospin,2)then table.insert(quirkstospin,2)elseif not table.find(val,'One For All')and table.find(quirkstospin,2)then for i,v in pairs(quirkstospin)do if v==2 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Quirkless')and not table.find(quirkstospin,3)then table.insert(quirkstospin,3)elseif not table.find(val,'Quirkless')and table.find(quirkstospin,3)then for i,v in pairs(quirkstospin)do if v==3 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Explosion')and not table.find(quirkstospin,6)then table.insert(quirkstospin,6)elseif not table.find(val,'Explosion')and table.find(quirkstospin,6)then for i,v in pairs(quirkstospin)do if v==6 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Overhaul')and not table.find(quirkstospin,16)then table.insert(quirkstospin,16)elseif not table.find(val,'Overhaul')and table.find(quirkstospin,16)then for i,v in pairs(quirkstospin)do if v==16 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Warp Gate')and not table.find(quirkstospin,8)then table.insert(quirkstospin,8)elseif not table.find(val,'Warp Gate')and table.find(quirkstospin,8)then for i,v in pairs(quirkstospin)do if v==8 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Air Propulsion')and not table.find(quirkstospin,11)then table.insert(quirkstospin,11)elseif not table.find(val,'Air Propulsion')and table.find(quirkstospin,11)then for i,v in pairs(quirkstospin)do if v==11 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Shock Absorption')and not table.find(quirkstospin,12)then table.insert(quirkstospin,12)elseif not table.find(val,'Shock Absorption')and table.find(quirkstospin,12)then for i,v in pairs(quirkstospin)do if v==12 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Blackhole')and not table.find(quirkstospin,18)then table.insert(quirkstospin,18)elseif not table.find(val,'Blackhole')and table.find(quirkstospin,18)then for i,v in pairs(quirkstospin)do if v==18 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Dark Shadow')and not table.find(quirkstospin,20)then table.insert(quirkstospin,20)elseif not table.find(val,'Dark Shadow')and table.find(quirkstospin,20)then for i,v in pairs(quirkstospin)do if v==20 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Cremation')and not table.find(quirkstospin,19)then table.insert(quirkstospin,19)elseif not table.find(val,'Cremation')and table.find(quirkstospin,19)then for i,v in pairs(quirkstospin)do if v==19 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Muscle Augmentation')and not table.find(quirkstospin,21)then table.insert(quirkstospin,21)elseif not table.find(val,'Muscle Augmentation')and table.find(quirkstospin,21)then for i,v in pairs(quirkstospin)do if v==21 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Permetion')and not table.find(quirkstospin,22)then table.insert(quirkstospin,22)elseif not table.find(val,'Permetion')and table.find(quirkstospin,22)then for i,v in pairs(quirkstospin)do if v==22 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Decay')and not table.find(quirkstospin,26)then table.insert(quirkstospin,26)elseif not table.find(val,'Decay')and table.find(quirkstospin,26)then for i,v in pairs(quirkstospin)do if v==26 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Acid')and not table.find(quirkstospin,27)then table.insert(quirkstospin,27)elseif not table.find(val,'Acid')and table.find(quirkstospin,27)then for i,v in pairs(quirkstospin)do if v==27 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Pop Off')and not table.find(quirkstospin,23)then table.insert(quirkstospin,23)elseif not table.find(val,'Pop Off')and table.find(quirkstospin,23)then for i,v in pairs(quirkstospin)do if v==23 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Creation')and not table.find(quirkstospin,28)then table.insert(quirkstospin,28)elseif not table.find(val,'Creation')and table.find(quirkstospin,28)then for i,v in pairs(quirkstospin)do if v==28 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Clones')and not table.find(quirkstospin,29)then table.insert(quirkstospin,29)elseif not table.find(val,'Clones')and table.find(quirkstospin,29)then for i,v in pairs(quirkstospin)do if v==29 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'All For One')and not table.find(quirkstospin,30)then table.insert(quirkstospin,30)elseif not table.find(val,'All For One')and table.find(quirkstospin,30)then for i,v in pairs(quirkstospin)do if v==30 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Frog')and not table.find(quirkstospin,32)then table.insert(quirkstospin,32)elseif not table.find(val,'Frog')and table.find(quirkstospin,32)then for i,v in pairs(quirkstospin)do if v==32 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Fierce Wings')and not table.find(quirkstospin,33)then table.insert(quirkstospin,33)elseif not table.find(val,'Fierce Wings')and table.find(quirkstospin,33)then for i,v in pairs(quirkstospin)do if v==33 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Orcinus')and not table.find(quirkstospin,35)then table.insert(quirkstospin,35)elseif not table.find(val,'Orcinus')and table.find(quirkstospin,35)then for i,v in pairs(quirkstospin)do if v==35 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Manifest')and not table.find(quirkstospin,36)then table.insert(quirkstospin,36)elseif not table.find(val,'Manifest')and table.find(quirkstospin,36)then for i,v in pairs(quirkstospin)do if v==36 then table.remove(quirkstospin,i)end end end
+		if table.find(val,'Big Fist')and not table.find(quirkstospin,37)then table.insert(quirkstospin,37)elseif not table.find(val,'Big Fist')and table.find(quirkstospin,37)then for i,v in pairs(quirkstospin)do if v==37 then table.remove(quirkstospin,i)end end end
+	end)
+	sss:CreateKeybind('P','Hide/Show Ui',function(state)lib:Init()end)
+	rs.Heartbeat:Connect(function()
+		pcall(function()plr.PlayerGui.SaveGui.AntiAutoClick.AntiAutoClickScript.Disabled=true end)
+		if farm then
+			namemobs()
+			for i,v in pairs(npcs:GetChildren())do
+				if table.find(mobstofarm,v.Name)then
+					rootpart.CFrame=CFrame.new(rootpart.Position+v.HumanoidRootPart.Position)
+					rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*-farmdistance
+				end
+			end
+		end
+		local function yes(key)local vim=game:GetService('VirtualInputManager')vim:SendKeyEvent(true,key,false,game)vim:SendKeyEvent(false,key,false,game)end
+		if auz then yes('Z')end
+		if aux then yes('X')end
+		if auc then yes('C')end
+		if auv then yes('V')end
+		if aub then yes('B')end
+		if auq then yes('Q')end
+		if asue then yes('E')end
+		if auf then yes('F')end
+	end)
+	spawn(function()while wait(1)do
+		if autospin then
+			print(table.unpack(quirkstospin))
+			if not table.find(quirkstospin,work.S1c2R5i66p5t5s51.PlayerData[plr.Name].Quirk.Value)and work.S1c2R5i66p5t5s51.PlayerData[plr.Name].Cash.Value>=5000 then
+				work.S1c2R5i66p5t5s51.Spin.Spinner:InvokeServer('Commons')
+			end
+		end
+	end end)
+end
 local maf03={
 	dbzfs={536102540,882399924,478132461,569994010,2046990924,882375367,3565304751,2050207304,3552157537,3618359401,566006798,3552158750,2651456105,535527772},
 	islands={4872321990,5899156129},
@@ -2050,3 +2157,4 @@ local maf03={
 if table.find(maf03.roghoul,game.PlaceId)then loadroghoul()end
 if table.find(maf03.bloxfruits,game.PlaceId)then loadbloxfruits()end
 if table.find(maf03.aba,game.PlaceId)then loadaba()end
+if table.find(maf04.bokuno,game.PlaceId)then loadbokunoroblox()end
