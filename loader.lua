@@ -2139,6 +2139,75 @@ local function loadbokunoroblox()
 		end
 	end end)
 end
+local function loadaut()
+	local living=work.Living repeat wait()until living:FindFirstChild(plr.Name)
+	local win=lib:Create('A Universal Time')
+	local s=win:CreateTab('Main')
+	local ss=win:CreateTab('Misc')
+	local sss=win:CreateTab('Options')
+	s:CreateLabel('Main')
+	local itemsfarm	
+	s:CreateToggle('Items Farm',function(state)itemsfarm=state end)
+	local itemstofarm={}local megacock={'Meteors','Chests','Standard Items','Sand Debris'}
+	s:CreateTableDropdown('Items',megacock,function(val)itemstofarm=val end)
+	local mobfarm	
+	s:CreateToggle('Mob Farm',function(state)mobfarm=state end)
+	megasupercock={}for i,v in pairs(living:GetChildren())do if not string.find(v.Name,'Dummy')and v.Name~='Akira_DEV'and not players:FindFirstChild(v.Name)then table.insert(megasupercock,v.Name)end end local mobtofarm
+	local shimata=s:CreateDropdown('Mob',megasupercock,function(val)mobtofarm=val end)
+	s:CreateButton('Refresh Mobs',function()
+	table.clear(megasupercock)
+	for i,v in pairs(living:GetChildren())do if not string.find(v.Name,'Dummy')and v.Name~='Akira_DEV'and not players:FindFirstChild(v.Name)then table.insert(megasupercock,v.Name)end end
+	shimata:RefreshDropdown(megasupercock)end)
+	local servertimelabel=ss:CreateLabel('Current Server Time : ? Seconds')
+	sss:CreateKeybind('RightControl','Hide/Show Ui',function(state)lib:Init()end)
+	local farmcdclickyes
+	local function yes(key)local vim=game:GetService('VirtualInputManager')vim:SendKeyEvent(true,key,false,game)delay(2,function()vim:SendKeyEvent(false,key,false,game)end)end
+	rs.Heartbeat:Connect(function()
+		pcall(function()servertimelabel:UpdateLabel('Current Server Time : '..work.ServerInformation.ServerTime.Value..' Seconds')end)
+		if itemsfarm then
+			if table.find(itemstofarm,'Meteors') then
+				for i,v in pairs(work.ItemSpawns.Meteors:GetChildren())do
+					if v:FindFirstChild('Meteor')then
+						rootpart.CFrame=v.Meteor.CFrame
+						farmcdclickyes=true delay(2,function()farmcdclickyes=false end)
+					end
+				end
+			end if table.find(itemstofarm,'Chests')then
+				for i,v in pairs(work.ItemSpawns.Chests:GetChildren())do
+					if v:FindFirstChild('Chest')and v.Chest:FindFirstChild('RootPart')then
+						plr.Character.Humanoid:ChangeState(11)
+					    tween=game:GetService('TweenService'):Create(rootpart,TweenInfo.new(1,Enum.EasingStyle.Linear),{CFrame=CFrame.new(v.Chest.RootPart.Position)})
+						tween:Play()
+						farmcdclickyes=true delay(2,function()farmcdclickyes=false end)
+					end
+				end
+			end if table.find(itemstofarm,'Standart Items')then
+				for i,v in pairs(work.ItemSpawns.StandardItems:GetChildren())do
+					if v:FindFirstChildOfClass('MeshPart')then
+						rootpart.CFrame=v:FindFirstChildOfClass('MeshPart').CFrame
+						farmcdclickyes=true delay(2,function()farmcdclickyes=false end)
+					end
+				end
+			end if table.find(itemstofarm,'Sand Debirs')then
+				for i,v in pairs(work.ItemSpawns['Sand Debris']:GetChildren())do
+					if v:FindFirstChild('Sand Debris')then
+						rootpart.CFrame=v['Sand Debris'].CFrame
+						farmcdclickyes=true delay(2,function()farmcdclickyes=false end)
+					end
+				end
+			end
+		end
+		if mobfarm then
+			for i,v in pairs(living:GetChildren())do
+				if v.Name==mobtofarm and v:FindFirstChild('HumanoidRootPart')and v:FindFirstChild('Humanoid')and v.Humanoid.Health>0 then
+					rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*-7
+				end
+			end
+		end
+	end)spawn(function()while wait(2)do
+		if farmcdclickyes then yes('E')end
+	end end)
+end
 local maf03={
 	dbzfs={536102540,882399924,478132461,569994010,2046990924,882375367,3565304751,2050207304,3552157537,3618359401,566006798,3552158750,2651456105,535527772},
 	islands={4872321990,5899156129},
@@ -2157,7 +2226,7 @@ if table.find(maf03.roghoul,game.PlaceId)then loadroghoul()end
 if table.find(maf03.bloxfruits,game.PlaceId)then loadbloxfruits()end
 if table.find(maf03.aba,game.PlaceId)then loadaba()end
 if table.find(maf03.bokuno,game.PlaceId)then loadbokunoroblox()end
-if table.find(maf03.aut,game.PlaceId)then loadbokunoroblox()end
+if table.find(maf03.aut,game.PlaceId)then loadaut()end
 pcall(function()
 	if syn then
 		pcall(function()
