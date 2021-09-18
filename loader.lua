@@ -1203,7 +1203,7 @@ local function loadbloxfruits()
 	ssssss:CreateButton('Rejoin',function()game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId,game.JobId,plr)end)
 	ssssss:CreateButton('Serverhop',function()loadstring(game:HttpGet("https://lewd.cat/tsg6yqysvrs7.lua"))() end)
 	local jesus
-	ssssss:CreateButton('Jesus',function(state)jesus=state end)
+	ssssss:CreateToggle('Jesus',function(state)jesus=state end)
 	ssssss:CreateLabel('Character')
 	local ws local jp local wsspeed local jpjp
 	ssssss:CreateToggle('WalkSpeed',function(state)ws=state end)
