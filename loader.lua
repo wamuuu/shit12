@@ -1988,7 +1988,9 @@ local function loadroghoul()
 	local stage=1
 	s:CreateSlider(1,stage,6,'Stage',function(state)stage=state end)
 	local autoskills
-	s:CreateToggle('Autoskills',function(state)autoskills=state end)
+	s:CreateToggle('AutoSkills',function(state)autoskills=state end)
+	local hidename
+	s:CreateToggle('Hide Name',function(state)hidename=state end)
 	ss:CreateKeybind('RightControl','Hide/Show Ui',function(state)lib:Init()end)
 	local function bv()
 	    if not rootpart:FindFirstChildOfClass('BodyVelocity')then
@@ -2009,10 +2011,10 @@ local function loadroghoul()
 					if v:FindFirstChild('HumanoidRootPart')and table.find(mobs,v.Name)then
 						if(rootpart.Position-v.HumanoidRootPart.Position).magnitude<nearestnpcmagnitude then nearestnpcmagnitude=(rootpart.Position-v.HumanoidRootPart.Position).magnitude nearestnpc=v end
 						if v==nearestnpc then
-							if nearestnpcmagnitude>50 then
+							if nearestnpcmagnitude>50 then cock=false
 							    tween=ts:Create(rootpart,TweenInfo.new(nearestnpcmagnitude/200,Enum.EasingStyle.Linear),{CFrame=CFrame.new(v.HumanoidRootPart.Position)})
 								tween:Play()bv()
-							else
+							else cock=true
 								pcall(function()tween:Cancel()rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*-farmdistance end)
 							end
 						end
@@ -2033,6 +2035,11 @@ local function loadroghoul()
 			end
 			if not table.find(mobs,nearestnpc)then nearestnpc=nil nearestnpcmagnitude=9e9 end
 		else pcall(function()tween:Cancel()end)end
+		if hidename then
+			if work:FindFirstChild(plr.Name)and plr.Character:FindFirstChild('Head')and plr.Character.Head:FindFirstChild('PlayerStatus')then
+				plr.Character.Head.PlayerStatus:Destroy()
+			end
+		end
 	end)
 end
 local function loadbokunoroblox()
