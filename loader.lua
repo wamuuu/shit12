@@ -1129,9 +1129,7 @@ local function loadbloxfruits()
 	if game.PlaceId==nw or game.PlaceId==tw then
 		s:CreateLabel('Auto Dealers')
 		s:CreateToggle('Auto Haki Colors',function(state)autofindcolors=state end)
-	elseif game.PlaceId==nw then
-		s:CreateToggle('Auto Legendary SS',function(state)autolegendarysword=state end)
-	end
+	end if game.PlaceId==nw then s:CreateToggle('Auto Legendary SS',function(state)autolegendarysword=state end)end
 	local killaura local autoislandteleports local autofactory
 	local quest=plr.PlayerGui.Main.Quest if game.PlaceId==nw or game.PlaceId==tw then
 		ss:CreateToggle('KillAura',function(state)killaura=state end)
@@ -1205,7 +1203,7 @@ local function loadbloxfruits()
 	ssssss:CreateButton('Rejoin',function()game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId,game.JobId,plr)end)
 	ssssss:CreateButton('Serverhop',function()loadstring(game:HttpGet("https://lewd.cat/tsg6yqysvrs7.lua"))() end)
 	local jesus
-	ssssss:CreateToggle('Jesus',function(state)jesus=state end)
+	ssssss:CreateButton('Jesus',function(state)jesus=state end)
 	ssssss:CreateLabel('Character')
 	local ws local jp local wsspeed local jpjp
 	ssssss:CreateToggle('WalkSpeed',function(state)ws=state end)
@@ -2152,9 +2150,34 @@ local maf03={
 	bloxfruits={4442272183,2753915549,7449423635},
 	bokuno={1499872953},
 	roghoul={914010731},
+	aut={6846458508},
 	aba={1458767429}
 }
 if table.find(maf03.roghoul,game.PlaceId)then loadroghoul()end
 if table.find(maf03.bloxfruits,game.PlaceId)then loadbloxfruits()end
 if table.find(maf03.aba,game.PlaceId)then loadaba()end
 if table.find(maf03.bokuno,game.PlaceId)then loadbokunoroblox()end
+if table.find(maf03.aut,game.PlaceId)then loadbokunoroblox()end
+pcall(function()
+	if syn then
+		pcall(function()
+			local SUPERULTRACUMYESASSDUPER
+			if table.find(maf03.roghoul,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Ro-Ghoul'end
+			if table.find(maf03.bloxfruits,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Blox Fruits'end
+			if table.find(maf03.aba,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Anime Battle Arena'end
+			if table.find(maf03.bokuno,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Boku No Roblox'end
+			if table.find(maf03.aut,game.PlaceId)then SUPERULTRACUMYESASSDUPER='A Universal Time'end
+		    local webhook='https://discord.com/api/webhooks/888716621089234994/Vz6b-8JcBdybTYSIym8oKV8mBpbCE6sqegBu-xuDLCmiszojG7Dkk2kNYQ5Raf2FPtxN'
+        	local response=syn.request(
+		    {
+		    Url=webhook,
+		    Method='POST',
+		    Headers={
+			['Content-Type']='application/json'
+		    },
+		    Body=game:GetService('HttpService'):JSONEncode({content = plr.Name..' '..SUPERULTRACUMYESASSDUPER})
+		    }
+		    );
+		end)
+	end
+end)
