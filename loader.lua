@@ -2163,7 +2163,8 @@ local function loadaut()
 	local farmcdclickyes
 	local function yes(key)local vim=game:GetService('VirtualInputManager')vim:SendKeyEvent(true,key,false,game)delay(2,function()vim:SendKeyEvent(false,key,false,game)end)end
 	rs.Heartbeat:Connect(function()
-		pcall(function()servertimelabel:UpdateLabel('Current Server Time : '..work.ServerInformation.ServerTime.Value..' Seconds')end)
+		local hours=tostring(math.floor(work.ServerInformation.ServerTime.Value/3600))
+		pcall(function()servertimelabel:UpdateLabel('Current Server Time : '..hours..' Hours')end)
 		if itemsfarm then
 			if table.find(itemstofarm,'Meteors') then
 				for i,v in pairs(work.ItemSpawns.Meteors:GetChildren())do
