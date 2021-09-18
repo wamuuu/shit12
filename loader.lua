@@ -1971,6 +1971,7 @@ local function loadaba()
 	spawn(function()while wait(0.1)do if megacock and autoplay then vim:SendMouseButtonEvent(0,0,0,true,game,1)vim:SendMouseButtonEvent(0,0,0,false,game,1)end end end)
 end
 local function loadroghoul()
+	repeat wait()until work:FindFirstChild(plr.Name)
 	local win=lib:Create('Ro-Ghoul')
 	local s=win:CreateTab('Main')
 	local ss=win:CreateTab('Options')
@@ -1997,11 +1998,12 @@ local function loadroghoul()
 	    end
 	end
 	local vim=game:GetService('VirtualInputManager')local ts=game:GetService('TweenService')local cock
-	spawn(function()while wait(0.25)do if farm and cock then vim:SendMouseButtonEvent(0,0,0,true,game,1)vim:SendMouseButtonEvent(0, 0, 0,false,game,1)end
+	spawn(function()while wait(0.15)do if farm and cock then vim:SendMouseButtonEvent(0,0,0,true,game,1)vim:SendMouseButtonEvent(0, 0, 0,false,game,1)end
 	if autoskills and cock then vim:SendKeyEvent(true,'E',false,game)vim:SendKeyEvent(true,'R',false,game)vim:SendKeyEvent(true,'F',false,game)end if autokagune and not plr.Character:FindFirstChild('Quinque')and not plr.Character:FindFirstChild('Kagune')then local stageusing='One'if stage==1 then stageusing='One'elseif stage==2 then stageusing='Two'elseif stage==3 then stageusing='Three'elseif stage==4 then stageusing='Four'elseif stage==5 then stageusing='Five'elseif stage==6 then stageusing='Six'end vim:SendKeyEvent(true,stageusing,false,game)end end end)
 	local nearestnpcmagnitude=9e9 local nearestnpc local tween local nearestcorpsemagnitude=9e9 local nearestcorpse
 	rs.Heartbeat:Connect(function()
 		if farm then
+			for i,v in pairs(plr.Character:GetChildren())do if v:IsA('BasePart')then v.CanCollide=false end end
 			for i,v in pairs(work.NPCSpawns:GetChildren())do
 				for i,v in pairs(v:GetChildren())do
 					if v:FindFirstChild('HumanoidRootPart')and table.find(mobs,v.Name)then
@@ -2010,19 +2012,19 @@ local function loadroghoul()
 							if nearestnpcmagnitude>50 then
 							    tween=ts:Create(rootpart,TweenInfo.new(nearestnpcmagnitude/200,Enum.EasingStyle.Linear),{CFrame=CFrame.new(v.HumanoidRootPart.Position)})
 								tween:Play()bv()
-								cock=false
 							else
-								pcall(function()tween:Cancel()rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*-farmdistance end)cock=true
+								pcall(function()tween:Cancel()rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*-farmdistance end)
 							end
 						end
-					elseif v:FindFirstChild(v.Name..' Corpse')and v[v.Name..' Corpse']:FindFirstChild('ClickPart')and table.find(mobs,v.Name)then
+					end
+				end
+			end
+			for i,v in pairs(work.NPCSpawns:GetChildren())do
+				for i,v in pairs(v:GetChildren())do
+					if v:FindFirstChild(v.Name..' Corpse')and v[v.Name..' Corpse']:FindFirstChild('ClickPart')and table.find(mobs,v.Name)then
 						local clickpart=v[v.Name..' Corpse'].ClickPart
-						if(rootpart.Position-clickpart.Position).magnitude<nearestcorpsemagnitude then nearestcorpsemagnitude=(rootpart.Position-clickpart.Position).magnitude nearestcorpse=clickpart end
-						if nearestcorpsemagnitude<nearestnpcmagnitude then
-							if nearestcorpsemagnitude>50 then
-							    tween=ts:Create(rootpart,TweenInfo.new(nearestcorpsemagnitude/200,Enum.EasingStyle.Linear),{CFrame=CFrame.new(clickpart.Position)})
-								tween:Play()bv()
-							elseif nearestcorpsemagnitude<50 and cock==false then
+						if (rootpart.Position-clickpart.Position).magnitude<nearestnpcmagnitude then
+							if (rootpart.Position-clickpart.Position).magnitude<50 and nearestnpcmagnitude>50 and not cock then
 								pcall(function()tween:Cancel()rootpart.CFrame=clickpart.CFrame+clickpart.CFrame.LookVector*-2 fireclickdetector(clickpart:FindFirstChildOfClass('ClickDetector')) end)
 							end
 						end
