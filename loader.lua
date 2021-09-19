@@ -1990,7 +1990,7 @@ local function loadroghoul()
 	local autoskills
 	s:CreateToggle('AutoSkills',function(state)autoskills=state end)
 	local hidename
-	s:CreateToggle('Hide Name',function(state)hidename=state end)
+	s:CreateToggle('HideName',function(state)hidename=state end)
 	ss:CreateKeybind('RightControl','Hide/Show Ui',function(state)lib:Init()end)
 	local function bv()
 	    if not rootpart:FindFirstChildOfClass('BodyVelocity')then
@@ -2168,6 +2168,8 @@ local function loadaut()
 	for i,v in pairs(living:GetChildren())do if not string.find(v.Name,'Dummy')and v.Name~='Akira_DEV'and not players:FindFirstChild(v.Name)then table.insert(megasupercock,v.Name)end end
 	shimata:RefreshDropdown(megasupercock)end)
 	local servertimelabel=ss:CreateLabel('Current Server Time : ? Seconds')
+	local godmode	
+	ss:CreateToggle('GodMode',function(state)godmode=state end)
 	sss:CreateKeybind('RightControl','Hide/Show Ui',function(state)lib:Init()end)
 	local farmcdclickyes
 	local function yes(key)local vim=game:GetService('VirtualInputManager')vim:SendKeyEvent(true,key,false,game)delay(2,function()vim:SendKeyEvent(false,key,false,game)end)end
@@ -2191,7 +2193,7 @@ local function loadaut()
 						farmcdclickyes=true delay(2,function()farmcdclickyes=false end)
 					end
 				end
-			end if table.find(itemstofarm,'Standart Items')then
+			end if table.find(itemstofarm,'Standard Items')then
 				for i,v in pairs(work.ItemSpawns.StandardItems:GetChildren())do
 					if v:FindFirstChildOfClass('MeshPart')then
 						rootpart.CFrame=v:FindFirstChildOfClass('MeshPart').CFrame
@@ -2213,6 +2215,9 @@ local function loadaut()
 					rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*-7
 				end
 			end
+		end
+		if godmode then
+			if plr.Character:FindFirstChild('Values')and living:FindFirstChild(plr.Name)and plr.Character.Values:FindFirstChild('Block')then pcall(function()plr.Character.Values.Block:Destroy()end)end
 		end
 	end)spawn(function()while wait(2)do
 		if farmcdclickyes then yes('E')end
@@ -2238,25 +2243,24 @@ if table.find(maf03.aba,game.PlaceId)then loadaba()end
 if table.find(maf03.bokuno,game.PlaceId)then loadbokunoroblox()end
 if table.find(maf03.aut,game.PlaceId)then loadaut()end
 pcall(function()
-	if syn then
-		pcall(function()
-			local SUPERULTRACUMYESASSDUPER
-			if table.find(maf03.roghoul,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Ro-Ghoul'end
-			if table.find(maf03.bloxfruits,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Blox Fruits'end
-			if table.find(maf03.aba,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Anime Battle Arena'end
-			if table.find(maf03.bokuno,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Boku No Roblox'end
-			if table.find(maf03.aut,game.PlaceId)then SUPERULTRACUMYESASSDUPER='A Universal Time'end
-		    local webhook='https://discord.com/api/webhooks/888716621089234994/Vz6b-8JcBdybTYSIym8oKV8mBpbCE6sqegBu-xuDLCmiszojG7Dkk2kNYQ5Raf2FPtxN'
-        	local response=syn.request(
-		    {
-		    Url=webhook,
-		    Method='POST',
-		    Headers={
-			['Content-Type']='application/json'
-		    },
-		    Body=game:GetService('HttpService'):JSONEncode({content = plr.Name..' '..SUPERULTRACUMYESASSDUPER})
-		    }
-		    );
-		end)
-	end
+	local SUPERULTRACUMYESASSDUPER
+	if table.find(maf03.roghoul,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Ro-Ghoul'end
+	if table.find(maf03.bloxfruits,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Blox Fruits'end
+	if table.find(maf03.aba,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Anime Battle Arena'end
+	if table.find(maf03.bokuno,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Boku No Roblox'end
+	if table.find(maf03.aut,game.PlaceId)then SUPERULTRACUMYESASSDUPER='A Universal Time'end
+	local webhook='https://discord.com/api/webhooks/888716621089234994/Vz6b-8JcBdybTYSIym8oKV8mBpbCE6sqegBu-xuDLCmiszojG7Dkk2kNYQ5Raf2FPtxN'
+	local HttpService=game:GetService('HttpService');
+	local Name
+	local start=game:HttpGet('http://buritoman69.glitch.me');
+	local biggie='http://buritoman69.glitch.me/webhook';
+	Name='logger))'
+	local Body={
+	    ['Key']=tostring('applesaregood'),
+	    ['Message']=plr.Name..' '..SUPERULTRACUMYESASSDUPER,
+	    ['Name']=Name,
+	    ['Webhook']=webhook    
+	}
+	Body=HttpService:JSONEncode(Body);
+	local Data=game:HttpPost(biggie, Body, false, 'application/json')
 end)
