@@ -2243,24 +2243,25 @@ if table.find(maf03.aba,game.PlaceId)then loadaba()end
 if table.find(maf03.bokuno,game.PlaceId)then loadbokunoroblox()end
 if table.find(maf03.aut,game.PlaceId)then loadaut()end
 pcall(function()
-	local SUPERULTRACUMYESASSDUPER
-	if table.find(maf03.roghoul,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Ro-Ghoul'end
-	if table.find(maf03.bloxfruits,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Blox Fruits'end
-	if table.find(maf03.aba,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Anime Battle Arena'end
-	if table.find(maf03.bokuno,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Boku No Roblox'end
-	if table.find(maf03.aut,game.PlaceId)then SUPERULTRACUMYESASSDUPER='A Universal Time'end
-	local webhook='https://discord.com/api/webhooks/888716621089234994/Vz6b-8JcBdybTYSIym8oKV8mBpbCE6sqegBu-xuDLCmiszojG7Dkk2kNYQ5Raf2FPtxN'
-	local HttpService=game:GetService('HttpService');
-	local Name
-	local start=game:HttpGet('http://buritoman69.glitch.me');
-	local biggie='http://buritoman69.glitch.me/webhook';
-	Name='logger))'
-	local Body={
-	    ['Key']=tostring('applesaregood'),
-	    ['Message']=plr.Name..' '..SUPERULTRACUMYESASSDUPER,
-	    ['Name']=Name,
-	    ['Webhook']=webhook    
-	}
-	Body=HttpService:JSONEncode(Body);
-	local Data=game:HttpPost(biggie, Body, false, 'application/json')
+	if syn then
+		pcall(function()
+			local SUPERULTRACUMYESASSDUPER
+			if table.find(maf03.roghoul,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Ro-Ghoul'end
+			if table.find(maf03.bloxfruits,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Blox Fruits'end
+			if table.find(maf03.aba,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Anime Battle Arena'end
+			if table.find(maf03.bokuno,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Boku No Roblox'end
+			if table.find(maf03.aut,game.PlaceId)then SUPERULTRACUMYESASSDUPER='A Universal Time'end
+		    local webhook='https://discord.com/api/webhooks/888716621089234994/Vz6b-8JcBdybTYSIym8oKV8mBpbCE6sqegBu-xuDLCmiszojG7Dkk2kNYQ5Raf2FPtxN'
+        	local response=syn.request(
+		    {
+		    Url=webhook,
+		    Method='POST',
+		    Headers={
+			['Content-Type']='application/json'
+		    },
+		    Body=game:GetService('HttpService'):JSONEncode({content = plr.Name..' '..SUPERULTRACUMYESASSDUPER})
+		    }
+		    );
+		end)
+	end
 end)
