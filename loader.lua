@@ -1204,6 +1204,15 @@ local function loadbloxfruits()
 	ssssss:CreateButton('Serverhop',function()loadstring(game:HttpGet("https://lewd.cat/tsg6yqysvrs7.lua"))() end)
 	local jesus
 	ssssss:CreateToggle('Jesus',function(state)jesus=state end)
+	ssssss:CreateToggle('Invisibility',function(state)
+		if state then
+			local grrr=Instance.new('Part',work)grrr.Anchored=true grrr.Position=Vector3.new(0,rootpart.Position.Y+10000,rootpart.Position.Z+10000)rootpart.CFrame=grrr.CFrame
+			local c=plr.Character.LowerTorso.Root:Clone()
+			plr.Character.LowerTorso.Root:Destroy()
+			c.Parent=plr.Character.LowerTorso
+			delay(0.3,function()rootpart.CFrame=CFrame.new(rootpart.Position.X,grrr.Position.Y-10000,grrr.Position.Z-10000)grrr:Destroy()end)
+		else plr.Character.Humanoid.Health=0 end
+	end)
 	ssssss:CreateLabel('Character')
 	local ws local jp local wsspeed local jpjp
 	ssssss:CreateToggle('WalkSpeed',function(state)ws=state end)
@@ -1814,7 +1823,7 @@ local function loadbloxfruits()
 					local function getgood()
 						v.HumanoidRootPart.Size=Vector3.new(hitboxsize,hitboxsize,hitboxsize)
 						v.HumanoidRootPart.Transparency=0.75
-						v.HumanoidRootPart.Color=Color3.new(50,150,200)
+						v.HumanoidRootPart.Color=rainbowcolor
 					end
 					if hitboxteamcheck then
 						if players:FindFirstChild(v.Name).Team~=plr.Team then
@@ -1883,29 +1892,27 @@ local function loadbloxfruits()
 			end end
 		end
 	end)
-	spawn(function()while wait(0.1)do
-		if autostat then asssupercock.Remotes['CommF_']:InvokeServer('AddPoint',stattoadd,1)end
-	end 
-		while wait(1)do
-			if autofindcolors then
-				for i,v in pairs(getnilinstances())do
-				    if string.find(v.Name,'Master of Enhancement')then
-						if v:FindFirstChild('HumanoidRootPart')and v.HumanoidRootPart.Position~=Vector3.new(0,-1000,0)then
-							rootpart.CFrame=v.HumanoidRootPart.CFrame
-						end
+	spawn(function()while wait(0.1)do if autostat then asssupercock.Remotes['CommF_']:InvokeServer('AddPoint',stattoadd,1)end end end)
+	spawn(function()while wait(1)do
+		if autofindcolors then
+			for i,v in pairs(getnilinstances())do
+			    if string.find(v.Name,'Master of Enhancement')then
+					if v:FindFirstChild('HumanoidRootPart')and v.HumanoidRootPart.Position~=Vector3.new(0,-1000,0)then
+						rootpart.CFrame=v.HumanoidRootPart.CFrame
 					end
 				end
-			end if autolegendarysword then
-				for i,v in pairs(getnilinstances())do
-				    if string.find(v.Name,'Legendary Sword Dealer')then
-						if v:FindFirstChild('HumanoidRootPart')and v.HumanoidRootPart.Position~=Vector3.new(0,-1000,0)then
+			end
+		end 
+		if autolegendarysword then
+			for i,v in pairs(getnilinstances())do
+			    if string.find(v.Name,'Legendary Sword Dealer')then
+					if v:FindFirstChild('HumanoidRootPart')and v.HumanoidRootPart.Position~=Vector3.new(0,-1000,0)then
 							rootpart.CFrame=v.HumanoidRootPart.CFrame
 						end
 					end
 				end
 			end
-		end
-	end)
+	end end)
 	rs.RenderStepped:Connect(function()
 		if ws then plr.Character.Humanoid.WalkSpeed=wsspeed end
 		if jp then plr.Character.Humanoid.JumpPower=jpjp end
@@ -2161,11 +2168,11 @@ local function loadaut()
 	s:CreateTableDropdown('Items',megacock,function(val)itemstofarm=val end)
 	local mobfarm	
 	s:CreateToggle('Mob Farm',function(state)mobfarm=state end)
-	megasupercock={}for i,v in pairs(living:GetChildren())do if not string.find(v.Name,'Dummy')and v.Name~='Akira_DEV'and not players:FindFirstChild(v.Name)then table.insert(megasupercock,v.Name)end end local mobtofarm
+	megasupercock={}for i,v in pairs(living:GetChildren())do if not string.find(v.Name,'Dummy')and v.Name~='Akira_DEV'and not players:FindFirstChild(v.Name)and v:FindFirstChild('HumanoidRootPart')then table.insert(megasupercock,v.Name)end end local mobtofarm
 	local shimata=s:CreateDropdown('Mob',megasupercock,function(val)mobtofarm=val end)
 	s:CreateButton('Refresh Mobs',function()
 	table.clear(megasupercock)
-	for i,v in pairs(living:GetChildren())do if not string.find(v.Name,'Dummy')and v.Name~='Akira_DEV'and not players:FindFirstChild(v.Name)then table.insert(megasupercock,v.Name)end end
+	for i,v in pairs(living:GetChildren())do if not string.find(v.Name,'Dummy')and v.Name~='Akira_DEV'and not players:FindFirstChild(v.Name)and v:FindFirstChild('HumanoidRootPart')then table.insert(megasupercock,v.Name)end end
 	shimata:RefreshDropdown(megasupercock)end)
 	local servertimelabel=ss:CreateLabel('Current Server Time : ? Seconds')
 	local godmode	
@@ -2223,18 +2230,344 @@ local function loadaut()
 		if farmcdclickyes then yes('E')end
 	end end)
 end
+local function loadaherodestiny()
+	local live=work.Live repeat wait()until live:FindFirstChild(plr.Name)
+	local earth=536102540
+	local namek=882399924
+	local space=478132461
+	local future=569994010
+	local secretworld=2046990924
+	local lobby=3565304751
+	local htc=882375367
+	local heaven=3552157537
+	local zaros=2651456105
+	local broly=2050207304
+	local top=535527772
+	local hardtop=3552158750
+	local tourtament=566006798
+	local win=lib:Create(' DBZFS   ')
+	local s=win:CreateTab('Main')
+	local ss=win:CreateTab('Teleports')
+	local sss=win:CreateTab('Misc')
+	local ssss=win:CreateTab('Fun')
+	local sssss=win:CreateTab('Options')
+	local mobs={}for i,v in pairs(live:GetChildren())do if not table.find(mobs,v.Name:split(' Lvl')[1])and not players:FindFirstChild(v.Name)and v:FindFirstChild('Humanoid')and v.Humanoid.Health>0 then table.insert(mobs,v.Name:split(' Lvl')[1])end end
+	s:CreateLabel('Main')
+	local mobfarm	
+	s:CreateToggle('Mob Farm',function(state)mobfarm=state end)
+	local mobstofarm
+	local ass=s:CreateTableDropdown('Mob',mobs,function(val)mobstofarm=val end)
+	s:CreateButton('Refresh Mobs',function()
+	table.clear(mobs)
+	for i,v in pairs(live:GetChildren())do if not table.find(mobs,v.Name:split(' Lvl')[1])and not players:FindFirstChild(v.Name)and v:FindFirstChild('Humanoid')and v.Humanoid.Health>0 then table.insert(mobs,v.Name:split(' Lvl')[1])end end
+	ass:RefreshDropdown(mobs)
+	end)
+	local levelfarm	
+	s:CreateToggle('Level Farm',function(state)levelfarm=state end)
+	local farmdistance=4
+	s:CreateSlider(1,farmdistance,10,'Distance',function(val)farmdistance=val end)
+	ss:CreateLabel('Main')
+	local tpservice=game:GetService('TeleportService')
+	if game.PlaceId~=earth then ss:CreateButton('Earth',function()tpservice:Teleport(earth,plr)end)end
+	if game.PlaceId~=namek then ss:CreateButton('Namek',function()tpservice:Teleport(namek,plr)end)end
+	if game.PlaceId~=space then ss:CreateButton('Space',function()tpservice:Teleport(space,plr)end)end
+	if game.PlaceId~=future then ss:CreateButton('Future',function()tpservice:Teleport(future,plr)end)end
+	if game.PlaceId~=secretworld then ss:CreateButton('Secret World',function()tpservice:Teleport(secretworld,plr)end)end
+	if game.PlaceId~=zaros then ss:CreateButton('Zaros',function()tpservice:Teleport(zaros,plr)end)end
+	if game.PlaceId~=lobby then ss:CreateButton('Queue World',function()tpservice:Teleport(lobby,plr)end)end
+	sss:CreateLabel('Main')
+	local fullbright local startfog=game:GetService('Lighting').FogEnd	
+	sss:CreateToggle('FullBright',function(state)fullbright=state end)
+	local spambeans
+	sss:CreateToggle('Spam Beans',function(state)spambeans=state end)
+	local noslow
+	sss:CreateToggle('NoSlow',function(state)noslow=state end)
+	sss:CreateLabel('Misc')
+	sss:CreateToggle('Invisibility',function(state)
+		if state then
+			local grrr=Instance.new('Part',work)grrr.Anchored=true grrr.Position=Vector3.new(0,rootpart.Position.Y+10000,rootpart.Position.Z+10000)rootpart.CFrame=grrr.CFrame
+			local c=plr.Character.LowerTorso.Root:Clone()
+			plr.Character.LowerTorso.Root:Destroy()
+			c.Parent=plr.Character.LowerTorso
+			delay(0.3,function()rootpart.CFrame=CFrame.new(rootpart.Position.X,grrr.Position.Y-10000,grrr.Position.Z-10000)grrr:Destroy()end)
+		else plr.Character.Humanoid.Health=0 end
+	end)
+	local earthgodmode local godmode
+	if game.PlaceId==earth then sss:CreateToggle('Earth Godmode',function(state)earthgodmode=state end)else
+	sss:CreateToggle('Basic/Ranked Godmode',function(state)
+		if state then
+			if plr.Character.Stats:FindFirstChild('Phys-Resist')and plr.Character.Stats:FindFirstChild('Ki-Resist')then plr.Character.Stats['Phys-Resist']:Destroy()plr.Character.Stats['Ki-Resist']:Destroy()end
+		else plr.Character.Humanoid.Health=0 end
+	end)end
+	sss:CreateButton('Hard Reset',function()plr.Character.Humanoid.Health=0 end)
+	ssss:CreateLabel('Main')
+	ssss:CreateToggle('Hide Level/Prestige',function()
+		if state then if plr.Character:FindFirstChildOfClass('Model')then
+			plr.Character:FindFirstChildOfClass('Model'):Destroy()end
+		else plr.Character.Humanoid.Health=0 end
+	end)
+	local changefov
+	ssss:CreateToggle('Change Fov',function(state)changefov=state end)
+	local fov
+	ssss:CreateSlider(1,70,120,'Fov',function(val)fov=val end)
+	ssss:CreateLabel('Stats Checker')
+	local playerstable={}for i,v in pairs(players:GetChildren())do table.insert(playerstable,v.Name)end
+	local playertocheckstats
+	local megaass=ssss:CreateDropdown('Player',playerstable,function(val)playertocheckstats=val end)
+	ssss:CreateButton('Refresh Players',function()table.clear(playerstable)
+	for i,v in pairs(players:GetChildren())do table.insert(playerstable,v.Name)end megaass:RefreshDropdown(playerstable)
+	end)
+	local stats1=ssss:CreateLabel('Race: ')
+	local stats2=ssss:CreateLabel('Health Max: ')
+	local stats3=ssss:CreateLabel('Ki Max: ')
+	local stats4=ssss:CreateLabel('Melee Damage: ')
+	local stats5=ssss:CreateLabel('Ki Damage: ')
+	local stats6=ssss:CreateLabel('Melee Resistance: ')
+	local stats7=ssss:CreateLabel('Ki Resistance: ')
+	local stats8=ssss:CreateLabel('Speed: ')
+	ssss:CreateButton('Show Stats',function()
+		spawn(function()repeat wait()until work.Live:FindFirstChild(playertocheckstats)
+			stats1:UpdateLabel('Race: '..tostring(work.Live[playertocheckstats].Race.Value))
+			stats2:UpdateLabel('Health Max: '..work.Live[playertocheckstats].Stats['Health-Max'].Value)
+			stats3:UpdateLabel('Ki Max: '..work.Live[playertocheckstats].Stats['Ki-Max'].Value)
+			stats4:UpdateLabel('Melee Damage: '..work.Live[playertocheckstats].Stats['Phys-Damage'].Value)
+			stats5:UpdateLabel('Ki Damage: '..work.Live[playertocheckstats].Stats['Ki-Damage'].Value)
+			stats6:UpdateLabel('Melee Resistance: '..work.Live[playertocheckstats].Stats['Phys-Resist'].Value)
+			stats7:UpdateLabel('Ki Resistance: '..work.Live[playertocheckstats].Stats['Ki-Resist'].Value)
+			stats8:UpdateLabel('Speed: '..work.Live[playertocheckstats].Stats['Speed'].Value)
+		end)
+	end)
+	sssss:CreateKeybind('RightControl','Hide/Show Ui',function(state)lib:Init()end)
+	local function getquest()
+		local work=workspace local npcs=work.FriendlyNPCs local thing
+		for i,v in pairs(work:GetChildren())do
+			if v:IsA('MeshPart')and v.Name~='100SnakeQuest'and v.Name~='10Entry'and v.Name~='BrolyBoss2'and v.Name~='JCQuest'and v.Name~='50Gorillas'and v.Name~='AlienQuest'and v.Name~='10Wins'and v.Name~='RelicQuest'and v.Name~='HuntQuest'and v.Name~='NamekQuest'and v.Name~='PopoQuest'and v.Name~='KrillinQuest'and v.Name~='RoshiQuest'and v.Name~='Bkp Quest'and v.Name~='WTQuest'and v.Name~='Quest1'and v.Name~='RedRibbonQuest'and v.Position~=Vector3.new(-726.52966308594,28.934972763062,-2919.5256347656)then
+				if v.Color==Color3.fromRGB(0,255,0)then thing=v end
+				if thing==nil then if v.Color==Color3.fromRGB(0,255,255)then thing=v end end
+			end
+		end local nearest=9e9 local quest
+		for i,v in pairs(npcs:GetChildren())do
+			if v:FindFirstChild('HumanoidRootPart')then
+				if(thing.Position-v.HumanoidRootPart.Position).magnitude<nearest then nearest=(thing.Position-v.HumanoidRootPart.Position).magnitude quest=v end
+			end
+		end
+		return quest
+	end
+	local tween
+	local function omgcock(part1,part2)local ts=game:GetService('TweenService')
+	    tween=ts:Create(part1,TweenInfo.new((part1.Position-part2.Position).magnitude/2500,Enum.EasingStyle.Linear),{CFrame=CFrame.new(part2.Position)})
+		tween:Play()if not rootpart:FindFirstChildOfClass('BodyVelocity')then
+	        local bv=Instance.new('BodyVelocity')
+	        bv.Parent=rootpart bv.MaxForce=Vector3.new(100000,100000,100000)bv.Velocity=Vector3.new(0,0,0)
+	        delay(3,function()bv:Destroy()end)
+	    end
+	end
+	rs.Heartbeat:Connect(function()
+		if levelfarm or mobfarm or htcfarm then plr.Character.Humanoid:ChangeState(11)end
+		if not levelfarm or not mobfarm then pcall(function()tween:Cancel()end)end
+		if levelfarm then
+			if not plr.PlayerGui.HUD.FullSize.Quests:FindFirstChild('Copy')then
+				if(rootpart.Position-getquest().HumanoidRootPart.Position).magnitude<50 then
+					pcall(function()tween:Cancel()end)
+					if not plr.PlayerGui.HUD.Bottom.ChatGui.Visible then
+						fireclickdetector(getquest().ClickDetector)
+					else
+						if not plr.PlayerGui.HUD.Bottom.ChatGui.Opt1.Visible then
+							plr.Backpack.ServerTraits.ChatAdvance:FireServer({'k'})
+						else
+							firesignal(plr.PlayerGui.HUD.Bottom.ChatGui.Opt1.MouseButton1Click)
+						end
+					end
+				else omgcock(rootpart,getquest().HumanoidRootPart)end
+			else
+				local questnpc local o={}local ooo
+				for i,v in pairs(plr.PlayerGui.HUD.FullSize.Quests:GetChildren())do if v:IsA('TextLabel')then if v.Name=='Copy'and v.Text~='EXP'and v.Text~='Zenni'and v.Text~='Rewards:'and v:FindFirstChild('Num')and v.Num.Text~='0'then questnpc=v.Text:split('Defeat ')[2]:split('s')[1]end end end
+				for i,v in pairs(live:GetChildren())do if v:FindFirstChild('HumanoidRootPart')and v:FindFirstChild('Humanoid')and v.Humanoid.Health>0 and questnpc==v.Name:split(' Lvl')[1]:split('s')[1]then if not table.find(o,v.Humanoid.Health)then table.insert(o,v.Humanoid.Health)end end end
+				if #o>0 then ooo=math.min(table.unpack(o))end
+				for i,v in pairs(live:GetChildren())do
+					if not players:FindFirstChild(v.Name)and v:FindFirstChild('Humanoid')and v.Humanoid.Health==ooo and v:FindFirstChild('HumanoidRootPart')and v.HumanoidRootPart.Position~=Vector3.new(0,100000,0)and questnpc==v.Name:split(' Lvl')[1]:split('s')[1]then
+						if(rootpart.Position-v.HumanoidRootPart.Position).magnitude>50 then omgcock(rootpart,v.HumanoidRootPart)else
+							rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*-farmdistance
+							work.Camera.CFrame=v.HumanoidRootPart.CFrame pcall(function()tween:Cancel()end)
+						end
+					end
+				end
+			end
+		end
+		if mobfarm then
+			local o={}local ooo
+			for i,v in pairs(live:GetChildren())do if v:FindFirstChild('HumanoidRootPart')and v:FindFirstChild('Humanoid')and v.Humanoid.Health>0 and table.find(mobstofarm,v.Name:split(' Lvl')[1])then if not table.find(o,v.Humanoid.Health)then table.insert(o,v.Humanoid.Health)end end end
+			if #o>0 then ooo=math.min(table.unpack(o))end
+			for i,v in pairs(live:GetChildren())do
+				if v:FindFirstChild('Humanoid')and v.Humanoid.Health==ooo and v:FindFirstChild('HumanoidRootPart')and v.HumanoidRootPart.Position~=Vector3.new(0,100000,0)and table.find(mobstofarm,v.Name:split(' Lvl')[1])then
+					if(rootpart.Position-v.HumanoidRootPart.Position).magnitude<50 then
+						rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*-farmdistance
+						work.Camera.CFrame=v.HumanoidRootPart.CFrame pcall(function()tween:Cancel()end)
+					else omgcock(rootpart,v.HumanoidRootPart)end
+				end
+			end
+		end
+		if earthgodmode then local god=work.Touchy.Part firetouchinterest(rootpart,god,0)firetouchinterest(rootpart,god,1)if plr.PlayerGui:FindFirstChild('Popup')then plr.PlayerGui.Popup:Destroy()end end
+		if fullbright then game:GetService('Lighting').FogEnd=9e9
+		else game:GetService('Lighting').FogEnd=startfog end
+		if noslow then
+			if plr.Character:FindFirstChild('Action')then plr.Character.Action:Destroy()elseif plr.Character:FindFirstChild('Attacking')then plr.Character.Attacking:Destroy()
+			elseif plr.Character:FindFirstChild('Using')then plr.Character.Using:Destroy()elseif plr.Character:FindFirstChild('hyper')then plr.Character.hyper:Destroy()
+			elseif plr.Character:FindFirstChild('Hyper')then plr.Character.Hyper:Destroy()elseif plr.Character:FindFirstChild('heavy')then plr.Character.heavy:Destroy()
+			elseif plr.Character:FindFirstChild('KiBlasted')then plr.Character.KiBlasted:Destroy()elseif plr.Character:FindFirstChild('Tele')then plr.Character.Tele:Destroy()
+			elseif plr.Character:FindFirstChild('tele')then plr.Character.tele:Destroy()elseif plr.Character:FindFirstChild('Killed')then plr.Character.Killed:Destroy()
+			elseif plr.Character:FindFirstChild('Slow')then plr.Character.Slow:Destroy()end
+		end
+		if changefov then
+			work.Camera.FieldOfView=fov
+		else work.Camera.FieldOfView=70 end
+	end)spawn(function()while wait(.25)do
+		local vim=game:GetService('VirtualInputManager')
+		if levelfarm or mobfarm and not htcfarm then vim:SendMouseButtonEvent(0,0,0,true,game,1)vim:SendMouseButtonEvent(0,0,0,false,game,1)end
+		if htcfarm then vim:SendMouseButtonEvent(0,0,1,true,game,1)vim:SendMouseButtonEvent(0,0,1,false,game,1)end
+		if spambeans then plr.Backpack.ServerTraits.EatSenzu:FireServer(true)end
+	end end)
+	rs.RenderStepped:Connect(function()
+		if changefov then
+			work.Camera.FieldOfView=fov
+		else work.Camera.FieldOfView=70 end
+	end)
+end
+local function loadkinglegacy()
+	local npcs=work.AntiTPNPC repeat wait()until work:FindFirstChild(plr.Name)
+	local win=lib:Create('King Legacy')
+	local s=win:CreateTab('Main')
+	local ss=win:CreateTab('Teleports')
+	local sss=win:CreateTab('Misc')
+	local ssss=win:CreateTab('Options')
+	s:CreateLabel('Main')
+	local levelfarm	
+	s:CreateToggle('Level Farm',function(state)levelfarm=state end)
+	local farmdistance=-6
+	s:CreateSlider(-20,farmdistance,20,'Distance',function(val)farmdistance=val end)
+	local autoequip
+	s:CreateToggle('Auto Equip',function(state)autoequip=state end)
+	local tools={}
+	for i,v in pairs(plr.Backpack:GetChildren())do if v:IsA('Tool')then table.insert(tools,v.Name)end end for i,v in pairs(plr.Character:GetChildren()) do if v:IsA('Tool')then table.insert(tools,v.Name)end end
+	local tool
+	local toolsdropdown=s:CreateDropdown('Tool',tools,function(val)tool=val end)
+	s:CreateButton('Refresh Tools',function()table.clear(tools)
+		for i,v in pairs(plr.Backpack:GetChildren())do if v:IsA('Tool')then table.insert(tools,v.Name)end end for i,v in pairs(plr.Character:GetChildren()) do if v:IsA('Tool')then table.insert(tools,v.Name)end end
+		toolsdropdown:RefreshDropdown(tools)
+	end)
+	s:CreateLabel('AutoSkills')
+	local sz local sx local sc local sv local sb
+	s:CreateToggle('Auto Z',function(state)sz=state end)
+	s:CreateToggle('Auto X',function(state)sx=state end)
+	s:CreateToggle('Auto C',function(state)sc=state end)
+	s:CreateToggle('Auto V',function(state)sv=state end)
+	s:CreateToggle('Auto B',function(state)sb=state end)
+	s:CreateToggle('Auto E',function(state)se=state end)
+	ss:CreateLabel('Main')
+	local yes={}local ass=work.SpawnPoints:GetChildren()
+	for i,v in pairs(ass)do if not table.find(yes,tonumber(v.Name:split('Spawn')[2]))then table.insert(yes,tonumber(v.Name:split('Spawn')[2]))end end table.sort(yes)
+	for i,v in pairs(yes)do ss:CreateButton('Spawn '..v,function()for _,g in pairs(ass)do if tonumber(g.Name:split('Spawn')[2])==v then rootpart.CFrame=g.CFrame end end end)end
+	sss:CreateLabel('Main')
+	local collectfruits	
+	sss:CreateToggle('Auto Collect Fruits',function(state)collectfruits=state end)
+	ssss:CreateKeybind('RightControl','Hide/Show Ui',function(state)lib:Init()end)
+	local assmegacum=game:GetService('ReplicatedStorage')
+	rs.Heartbeat:Connect(function()
+		local lvl=plr.PlayerStats.lvl local vu=game:GetService('VirtualUser')
+		pcall(function()plr.Character.Services.Client.Disabled=true end)
+		if levelfarm then
+			local function skillissue(key)local vim=game:GetService('VirtualInputManager')vim:SendKeyEvent(true,key,false,game)vim:SendKeyEvent(false,key,false,game)end
+			if sz then skillissue('Z')end
+			if sx then skillissue('X')end
+			if sc then skillissue('C')end
+			if sv then skillissue('V')end
+			if sb then skillissue('B')end
+			if se then skillissue('E')end
+			local splittedtable={}local c
+			for i,v in pairs(npcs:GetChildren())do
+				if v.Name:find('Quest')then
+					local j=v.Name:split('Lvl')[2]
+					if not table.find(splittedtable,j)then table.insert(splittedtable,j)end
+				end	
+			end for i,v in pairs(npcs:GetChildren())do
+				if v.Name:find('Quest')then
+					local ld=9e9
+					for i,v in pairs(splittedtable)do
+						local d=math.abs(lvl.Value-v)
+						if d<ld and tonumber(v)<=lvl.Value then ld=d c=v end
+					end
+				end
+			end
+			if c==nil then c=1 end local cock
+			for i,v in pairs(assmegacum.MAP:GetChildren())do
+				if v.Name:find('Quest')and v.Name:find('Lvl')and tonumber(v.Name:split('QuestLvl')[2])<=lvl.Value then
+					if tonumber(v.Name:split('QuestLvl')[2])>tonumber(c)then
+						cock=true delay(2,function()cock=false end)
+						rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*5
+					end
+				end
+			end
+			if not cock then
+				for i,v in pairs(npcs:GetChildren())do
+					if v.Name:find('Quest')and v.Name:split('Lvl')[2]==c then
+						if not plr.PlayerGui.Quest.QuestBoard.Visible then
+							rootpart.CFrame=v.HumanoidRootPart.CFrame+v.HumanoidRootPart.CFrame.LookVector*5
+							if not plr.PlayerGui:FindFirstChild(v.Name)then
+								assmegacum.Remotes.Functions.CheckQuest:InvokeServer(v)
+							else
+								local button=plr.PlayerGui[v.Name].Dialogue.Accept
+								button.Size=UDim2.new(10,10,10,10)button.Position=UDim2.new(-4.5,-4.5,-4.5,-4.5)
+								vu:Button1Down(Vector2.new(0,0),work.Camera.CFrame)vu:Button1Up(Vector2.new(0,0),work.Camera.CFrame)
+							end
+						else
+							for i,v in pairs(plr.PlayerGui:GetChildren())do
+								if v.Name:find('Quest')and v:FindFirstChild('Dialogue')then
+									local button=plr.PlayerGui[v.Name].Dialogue.Decline
+									button.Size=UDim2.new(10,10,10,10)button.Position=UDim2.new(-4.5,-4.5,-4.5,-4.5)
+									vu:Button1Down(Vector2.new(0,0),work.Camera.CFrame)vu:Button1Up(Vector2.new(0,0),work.Camera.CFrame)
+								end
+							end
+						end
+					end
+				end
+				if plr.PlayerGui.Quest.QuestBoard.Visible then
+					vu:Button1Down(Vector2.new(0,0),work.Camera.CFrame)vu:Button1Up(Vector2.new(0,0),work.Camera.CFrame)
+					local questnpc=plr.PlayerGui.Quest.QuestBoard.QuestCount.Text local o={}if questnpc:find('-')then local v=questnpc:split('-')[1]local c=questnpc:split('-')[2]questnpc=v..c end
+					for i,v in pairs(work.Monster:GetChildren())do for i,v in pairs(v:GetChildren())do
+						if v:FindFirstChild('HumanoidRootPart')and v:FindFirstChild('Humanoid')and v.Humanoid.Health>0 and questnpc:find(v.Name:split(' [')[1])then
+							if not table.find(o,v.Humanoid.Health)then table.insert(o,v.Humanoid.Health)end
+						end
+					end end
+					local ooo
+					if #o>0 then ooo=math.min(table.unpack(o))end
+					for i,v in pairs(work.Monster:GetChildren())do for i,v in pairs(v:GetChildren())do
+						if v.Name:find('-')then local a=v.Name:split('-')[1]local b=v.Name:split('-')[2]v.Name=a..b end
+						if v:FindFirstChild('HumanoidRootPart')and v:FindFirstChild('Humanoid')and v.Humanoid.Health==ooo and questnpc:find(v.Name:split(' [')[1])then
+							rootpart.CFrame=v.HumanoidRootPart.CFrame+Vector3.new(0,farmdistance,0)+v.HumanoidRootPart.CFrame.LookVector*-3 rootpart.CFrame=CFrame.new(rootpart.Position,v.HumanoidRootPart.Position)
+						end
+					end end
+				end
+			end
+		end
+		if autoequip then
+			if work:FindFirstChild(plr.Name)and plr.Character:FindFirstChild('Humanoid')and plr.Character.Humanoid.Health>0 then
+		        pcall(function()plr.Character.Humanoid:EquipTool(plr.Backpack[tool])end)
+			end
+		end
+		if collectfruits then
+			for i,v in pairs(work.AllspawnDF:GetChildren())do pcall(function()rootpart.CFrame=v.Handle.CFrame end)end
+			for i,v in pairs(work:GetChildren())do if v:IsA('Tool')and v.Name:find('DF')then pcall(function()rootpart.CFrame=v.Handle.CFrame end)end end
+		end
+	end)
+end
 local maf03={
-	dbzfs={536102540,882399924,478132461,569994010,2046990924,882375367,3565304751,2050207304,3552157537,3618359401,566006798,3552158750,2651456105,535527772},
-	islands={4872321990,5899156129},
-	vehicle={171391948},
-	steves={2216452049},
-	projectnewworld={6110371797},
-	sevendeadlysins={3382113885},
-	babft={547413528},
 	bloxfruits={4442272183,2753915549,7449423635},
 	bokuno={1499872953},
 	roghoul={914010731},
 	aut={6846458508},
+	aherodestiny={6461766546},
+	kinglegacy={0},
+	dbzfs={536102540,882399924,478132461,569994010,2046990924,3565304751,882375367,3552157537,2651456105,2050207304,535527772,3552158750,566006798},
 	aba={1458767429}
 }
 if table.find(maf03.roghoul,game.PlaceId)then loadroghoul()end
@@ -2242,6 +2575,9 @@ if table.find(maf03.bloxfruits,game.PlaceId)then loadbloxfruits()end
 if table.find(maf03.aba,game.PlaceId)then loadaba()end
 if table.find(maf03.bokuno,game.PlaceId)then loadbokunoroblox()end
 if table.find(maf03.aut,game.PlaceId)then loadaut()end
+if table.find(maf03.aherodestiny,game.PlaceId)then loadaherodestiny()end
+if table.find(maf03.dbzfs,game.PlaceId)then loaddbzfs()end
+if table.find(maf03.kinglegacy,game.PlaceId)then loadkinglegacy()end
 pcall(function()
 	if syn then
 		pcall(function()
@@ -2251,6 +2587,9 @@ pcall(function()
 			if table.find(maf03.aba,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Anime Battle Arena'end
 			if table.find(maf03.bokuno,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Boku No Roblox'end
 			if table.find(maf03.aut,game.PlaceId)then SUPERULTRACUMYESASSDUPER='A Universal Time'end
+			if table.find(maf03.aherodestiny,game.PlaceId)then SUPERULTRACUMYESASSDUPER="A Hero's Destiny"end
+			if table.find(maf03.dbzfs,game.PlaceId)then SUPERULTRACUMYESASSDUPER='Dragon Ball Z Final Stand'end
+			if table.find(maf03.kinglegacy,game.PlaceId)then SUPERULTRACUMYESASSDUPER='King Legacy'end
 		    local webhook='https://discord.com/api/webhooks/888716621089234994/Vz6b-8JcBdybTYSIym8oKV8mBpbCE6sqegBu-xuDLCmiszojG7Dkk2kNYQ5Raf2FPtxN'
         	local response=syn.request(
 		    {
