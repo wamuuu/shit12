@@ -2474,7 +2474,6 @@ local function loadkinglegacy()
 	local assmegacum=game:GetService('ReplicatedStorage')
 	rs.Heartbeat:Connect(function()
 		local lvl=plr.PlayerStats.lvl local vu=game:GetService('VirtualUser')
-		pcall(function()plr.Character.Services.Client.Disabled=true end)
 		if levelfarm then
 			local function skillissue(key)local vim=game:GetService('VirtualInputManager')vim:SendKeyEvent(true,key,false,game)vim:SendKeyEvent(false,key,false,game)end
 			if sz then skillissue('Z')end
